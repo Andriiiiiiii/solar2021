@@ -80,11 +80,12 @@ class Drawer:
 
 
 class DrawableObject:
-    def __init__(self, obj, scale_factor):
+    def __init__(self, obj):
         self.obj = obj
-        self.scale_factor = scale_factor
+    
     def draw(self, surface): # функция рисования
+        global scale_factor
         self.x = scale_x(self.obj.x)
         self.y = scale_y(self.obj.y)
-        self.r = self.obj.R*self.scale_factor
+        self.r = self.obj.R*scale_factor
         circle(surface, self.obj.color, (self.x, self.y), self.r)
