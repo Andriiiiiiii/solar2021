@@ -85,5 +85,5 @@ class DrawableObject:
     def draw(self, surface):
         self.x = scale_x(self.obj.x)
         self.y = scale_y(self.obj.y)
-        self.r = R
+        self.r = self.obj.R
         self.image = surface.create_oval([x - r, y - r], [x + r, y + r], fill=self.color)
