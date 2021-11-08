@@ -83,7 +83,7 @@ class DrawableObject:
     def __init__(self, obj, scale_factor):
         self.obj = obj
         self.scale_factor = scale_factor
-    def draw(self, surface):
+    def draw(self, surface): # функция рисования
         self.x = scale_x(self.obj.x)
         self.y = scale_y(self.obj.y)
         self.r = self.obj.R*self.scale_factor
