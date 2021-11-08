@@ -11,10 +11,10 @@ import pygame as pg
 header_font = "Arial-16"
 """Шрифт в заголовке"""
 
-window_width = 600
+window_width = 800
 """Ширина окна"""
 
-window_height = 600
+window_height = 800
 """Высота окна"""
 
 scale_factor = 1
@@ -68,6 +68,7 @@ class Drawer:
     def __init__(self, screen):
         self.screen = screen
 
+
     def update(self, figures, ui):
         self.screen.fill((0, 0, 0))
         for figure in figures:
@@ -81,8 +82,7 @@ class Drawer:
 class DrawableObject:
     def __init__(self, obj):
         self.obj = obj
-
-    def draw(self, surface): # функция рисования
+    def draw(self, surface):
         self.x = scale_x(self.obj.x)
         self.y = scale_y(self.obj.y)
         self.r = self.obj.R
