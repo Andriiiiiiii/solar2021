@@ -117,7 +117,7 @@ def init_ui(screen):
     for element in menu.get_population():
         element.surface = screen
 
-    box.set_topleft((0,0))
+    box.set_topleft((0, 0))
     box.blit()
     box.update()
     return menu, box, timer
@@ -141,8 +141,8 @@ def main():
 
     pg.init()
     
-    width = 1000
-    height = 900
+    width = 600
+    height = 600
     screen = pg.display.set_mode((width, height))
     last_time = time.perf_counter()
     drawer = Drawer(screen)

@@ -13,7 +13,6 @@ def read_space_objects_data_from_file(input_filename):
 
     **input_filename** — имя входного файла
     """
-
     objects = []
     with open(input_filename, 'r') as input_file:
         for line in input_file:
@@ -33,6 +32,7 @@ def read_space_objects_data_from_file(input_filename):
                 print("Unknown space object")
 
     return [DrawableObject(obj) for obj in objects]
+
 
 
 def parse_star_parameters(line, star):
@@ -117,8 +117,9 @@ def write_space_objects_data_to_file(output_filename, space_objects):
 
     **space_objects** — список объектов планет и звёзд
     """
-    with open(output_filename, 'w') as out_file:
+    with open(output_filename, 'w+') as out_file:
         for obj in space_objects:
+            print(type(obj))
             out_file.write("{} {} {} {} {} {} {} {}".format(obj.type, obj.R, obj.color, obj.m,
                                                             obj.x, obj.y, obj.Vx, obj.Vy))
 
