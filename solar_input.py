@@ -53,6 +53,8 @@ def parse_star_parameters(line, star):
 
     **star** — объект звезды.
     """
+    split = line.split()
+    star.R = int(split[1])
     pass  # FIXME: допишите парсер
 
 def parse_planet_parameters(line, planet):
