@@ -80,10 +80,11 @@ class Drawer:
 
 
 class DrawableObject:
-    def __init__(self, obj):
+    def __init__(self, obj, scale_factor):
         self.obj = obj
+        self.scale_factor = scale_factor
     def draw(self, surface):
         self.x = scale_x(self.obj.x)
         self.y = scale_y(self.obj.y)
-        self.r = self.obj.R
-        self.image = surface.create_oval([x - r, y - r], [x + r, y + r], fill=self.color)
+        self.r = self.obj.R*self.scale_factor
+        circle(surface, self.obj.color, (self.x, self.y), r)
