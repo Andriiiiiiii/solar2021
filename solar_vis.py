@@ -57,8 +57,7 @@ def scale_y(y):
 
     **y** — y-координата модели.
     """
-    pass  # FIXME
-
+    return int(y*scale_factor) + window_height//2
 
 
 if __name__ == "__main__":
@@ -83,6 +82,10 @@ class Drawer:
 class DrawableObject:
     def __init__(self, obj):
         self.obj = obj
-
+        
     def draw(self, surface):
-            pass  # FIXME
+        x = scale_x(self.x)
+        y = scale_y(self.y)
+        r = self.R
+        self.image = surface.create_oval([x - r, y - r], [x + r, y + r], fill=self.color)
+    
