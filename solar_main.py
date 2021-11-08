@@ -48,9 +48,13 @@ def start_execution():
     global perform_execution
     perform_execution = True
 
+
 def pause_execution():
     global perform_execution
+    global space_objects
+    write_space_objects_data_to_file('out.txt', space_objects)
     perform_execution = False
+
 
 def stop_execution():
     """Обработчик события нажатия на кнопку Start.
@@ -58,6 +62,7 @@ def stop_execution():
     """
     global alive
     alive = False
+
 
 def open_file():
     """Открывает диалоговое окно выбора имени файла и вызывает
@@ -69,7 +74,7 @@ def open_file():
     global model_time
 
     model_time = 0.0
-    in_filename = "solar_system.txt"
+    in_filename = "out.txt"
     space_objects = read_space_objects_data_from_file(in_filename)
     max_distance = max([max(abs(obj.obj.x), abs(obj.obj.y)) for obj in space_objects])
     calculate_scale_factor(max_distance)
@@ -81,12 +86,15 @@ def handle_events(events, menu):
         if event.type == pg.QUIT:
             alive = False
 
+
 def slider_to_real(val):
     return np.exp(5 + val)
+
 
 def slider_reaction(event):
     global time_scale
     time_scale = slider_to_real(event.el.get_value())
+
 
 def init_ui(screen):
     global browser
@@ -121,6 +129,7 @@ def init_ui(screen):
     box.blit()
     box.update()
     return menu, box, timer
+
 
 def main():
     """Главная функция главного модуля.
