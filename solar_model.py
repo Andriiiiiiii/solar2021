@@ -33,11 +33,10 @@ def move_space_object(body, dt):
 
     **body** — тело, которое нужно переместить.
     """
-    # FIXME: Вывести формулы для ускорения, скоростей и координат
     ax = body.Fx/body.m
     ay = body.Fy/body.m
-    body.Vx += body.ax*dt
-    body.Vy += body.ay*dt
+    body.Vx += ax*dt
+    body.Vy += ay*dt
     body.x += body.Vx*dt
     body.y += body.Vy*dt
 

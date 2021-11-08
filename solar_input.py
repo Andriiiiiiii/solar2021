@@ -4,6 +4,7 @@
 from solar_objects import Star, Planet
 from solar_vis import DrawableObject
 
+
 def read_space_objects_data_from_file(input_filename):
     """Cчитывает данные о космических объектах из файла, создаёт сами объекты
     и вызывает создание их графических образов
@@ -54,13 +55,18 @@ def parse_star_parameters(line, star):
     **star** — объект звезды.
     """
     split = line.split()
-    star.R = int(split[1])
+    for i in range(1, len(split)):
+        try:
+            split[i] = float(split[i])
+        except ValueError:
+            pass
+    star.R = split[1]
     star.color = split[2]
-    star.m = int(split[3])
-    star.x = int(split[4])
-    star.y = int(split[5])
-    star.Vx = int(split[6])
-    star.Vy = int(split[7])
+    star.m = split[3]
+    star.x = split[4]
+    star.y = split[5]
+    star.Vx = split[6]
+    star.Vy = split[7]
 
 
 def parse_planet_parameters(line, planet):
@@ -82,13 +88,18 @@ def parse_planet_parameters(line, planet):
     **planet** — объект планеты.
     """
     split = line.split()
-    planet.R = int(split[1])
+    for i in range(len(split)):
+        try:
+            split[i] = float(split[i])
+        except ValueError:
+            pass
+    planet.R = split[1]
     planet.color = split[2]
-    planet.m = int(split[3])
-    planet.x = int(split[4])
-    planet.y = int(split[5])
-    planet.Vx = int(split[6])
-    planet.Vy = int(split[7])
+    planet.m = split[3]
+    planet.x = split[4]
+    planet.y = split[5]
+    planet.Vx = split[6]
+    planet.Vy = split[7]
 
 
 def write_space_objects_data_to_file(output_filename, space_objects):
