@@ -6,7 +6,7 @@ from solar_vis import DrawableObject
 
 
 def read_space_objects_data_from_file(input_filename):
-    """Cчитывает данные о космических объектах из файла, создаёт сами объекты
+    """Считывает данные о космических объектах из файла, создаёт сами объекты
     и вызывает создание их графических образов
 
     Параметры:
@@ -32,7 +32,6 @@ def read_space_objects_data_from_file(input_filename):
                 print("Unknown space object")
 
     return [DrawableObject(obj) for obj in objects]
-
 
 
 def parse_star_parameters(line, star):
@@ -117,11 +116,10 @@ def write_space_objects_data_to_file(output_filename, space_objects):
 
     **space_objects** — список объектов планет и звёзд
     """
-    with open(output_filename, 'w+') as out_file:
+    with open(output_filename, 'w') as out_file:
         for obj in space_objects:
-            print(type(obj))
-            out_file.write("{} {} {} {} {} {} {} {}".format(obj.type, obj.R, obj.color, obj.m,
-                                                            obj.x, obj.y, obj.Vx, obj.Vy))
+            out_file.write("{} {} {} {} {} {} {} {}\n".format(obj.obj.type, obj.obj.R, obj.obj.color, obj.obj.m,
+                                                              obj.obj.x, obj.obj.y, obj.obj.Vx, obj.obj.Vy))
 
 
 if __name__ == "__main__":
