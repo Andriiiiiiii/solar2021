@@ -87,4 +87,4 @@ class DrawableObject:
         self.x = scale_x(self.obj.x)
         self.y = scale_y(self.obj.y)
         self.r = self.obj.R*self.scale_factor
-        circle(surface, self.obj.color, (self.x, self.y), r)
+        circle(surface, self.obj.color, (self.x, self.y), self.r)
