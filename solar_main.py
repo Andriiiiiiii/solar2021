@@ -108,7 +108,7 @@ def init_ui(screen):
         timer])
     reaction1 = thorpy.Reaction(reacts_to=thorpy.constants.THORPY_EVENT,
                                 reac_func=slider_reaction,
-                                event_args={"id":thorpy.constants.EVENT_SLIDE},
+                                event_args={"id": thorpy.constants.EVENT_SLIDE},
                                 params={},
                                 reac_name="slider reaction")
     box.add_reaction(reaction1)
@@ -162,6 +162,7 @@ def main():
         time.sleep(1.0 / 60)
 
     print('Modelling finished!')
+
 
 if __name__ == "__main__":
     main()
