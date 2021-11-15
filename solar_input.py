@@ -1,6 +1,10 @@
 # coding: utf-8
 # license: GPLv3
+import time
 
+import pygame
+import pygame.freetype
+import os
 from solar_objects import Star, Planet
 from solar_vis import DrawableObject
 
@@ -120,6 +124,36 @@ def write_space_objects_data_to_file(output_filename, space_objects):
         for obj in space_objects:
             out_file.write("{} {} {} {} {} {} {} {}\n".format(obj.obj.type, obj.obj.R, obj.obj.color, obj.obj.m,
                                                               obj.obj.x, obj.obj.y, obj.obj.Vx, obj.obj.Vy))
+
+
+def ask_for_file_name(configs_dir, surface: pygame.Surface):
+    font = pygame.freetype.SysFont("Times New Roman", 15)
+    filenames = os.listdir(configs_dir)
+    start_x, start_y = surface.get_width()//4, surface.get_height()//4
+    x, y = start_x, start_y
+    dy = 20
+    for filename in filenames:
+        if os.path.splitext(filename)[1] != ".txt":
+            print(filename)
+            filenames.remove(filename)
+            continue
+        font.render_to(surface, (x, y), filename, (255, 255, 255))
+        y += dy
+    pygame.display.update()
+    print(filenames)
+    while not False:
+        for event in pygame.event.get(pygame.MOUSEBUTTONDOWN):
+            print(event.pos)
+            i = (event.pos[1] - start_y)//20
+            print(i)
+            try:
+                return filenames[i]
+            except IndexError:
+                pass
+        if pygame.event.get(pygame.QUIT):
+            print("haha")
+            pygame.quit()
+        time.sleep(1.0/60)
 
 
 if __name__ == "__main__":
