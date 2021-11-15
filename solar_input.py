@@ -126,7 +126,7 @@ def write_space_objects_data_to_file(output_filename, space_objects):
                                                               obj.obj.x, obj.obj.y, obj.obj.Vx, obj.obj.Vy))
 
 
-def ask_for_file_name(configs_dir, surface: pygame.Surface):
+def ask_for_file_name(surface: pygame.Surface, configs_dir=os.path.split(os.path.abspath(__file__))[0]):
     font = pygame.freetype.SysFont("Times New Roman", 15)
     filenames = os.listdir(configs_dir)
     for i in range(len(filenames) - 1, -1, -1):
@@ -146,7 +146,7 @@ def ask_for_file_name(configs_dir, surface: pygame.Surface):
             if i < 0:
                 continue
             try:
-                return filenames[i]
+                return os.path.join(configs_dir, filenames[i])
             except IndexError:
                 pass
         if pygame.event.get(pygame.QUIT):

@@ -13,7 +13,7 @@ import numpy as np
 timer = None
 
 alive = True
-path_to_configs_dir = r"C:\Users\Антон_Ноут\PycharmProjects\solar2021"
+path_to_configs_dir = r"C:\Users\Антон_Ноут\Desktop"
 perform_execution = False
 """Флаг цикличности выполнения расчёта"""
 
@@ -75,7 +75,7 @@ def open_file():
     global screen
 
     model_time = 0.0
-    in_filename = ask_for_file_name(path_to_configs_dir, screen)
+    in_filename = ask_for_file_name(screen, path_to_configs_dir)
     space_objects = read_space_objects_data_from_file(in_filename)
     max_distance = 1.2*max([max(abs(obj.obj.x), abs(obj.obj.y)) for obj in space_objects])
     calculate_scale_factor(max_distance)
