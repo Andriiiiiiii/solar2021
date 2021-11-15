@@ -73,12 +73,14 @@ def open_file():
     global browser
     global model_time
     global screen
+    global time_scale
 
     model_time = 0.0
-    in_filename = ask_for_file_name(screen, path_to_configs_dir)
+    in_filename = ask_for_file_name(screen)
     space_objects = read_space_objects_data_from_file(in_filename)
     max_distance = 1.2*max([max(abs(obj.obj.x), abs(obj.obj.y)) for obj in space_objects])
     calculate_scale_factor(max_distance)
+    time_scale = 0
 
 
 def handle_events(events, menu):
@@ -90,7 +92,7 @@ def handle_events(events, menu):
 
 
 def slider_to_real(val):
-    return np.sign(val)*np.exp(5 + abs(val))
+    return np.sign(val)*(np.exp(5 + abs(val)) - np.exp(5))
 
 
 def slider_reaction(event):
