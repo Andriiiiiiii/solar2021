@@ -74,12 +74,14 @@ def open_file():
     global model_time
     global screen
     global time_scale
+    global slider
 
     model_time = 0.0
     in_filename = ask_for_file_name(screen)
     space_objects = read_space_objects_data_from_file(in_filename)
     max_distance = 1.2*max([max(abs(obj.obj.x), abs(obj.obj.y)) for obj in space_objects])
     calculate_scale_factor(max_distance)
+    slider.set_value(0)
     time_scale = 0
 
 
@@ -102,6 +104,7 @@ def slider_reaction(event):
 
 def init_ui(screen):
     global browser
+    global slider
     slider = thorpy.SliderX(100, (-10, 10), "Simulation speed")
     slider.user_func = slider_reaction
     button_stop = thorpy.make_button("Quit", func=stop_execution)
